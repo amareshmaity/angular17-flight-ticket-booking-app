@@ -1,0 +1,90 @@
+.text-head {
+  text-align: center;
+  color: yellow;
+  margin: 0 0 20px 0;
+}
+
+.view-tkt-btn {
+  border-radius: 8px;
+  padding: 5px 12px;
+  display: block;
+  margin: auto;
+  color: tomato;
+  font-weight: bold;
+}
+.view-tkt-btn:hover {
+  color: blue;
+  background-color: aliceblue;
+  transform: scale(1.01);
+}
+
+/* .table1,
+.table2 {
+  border-spacing: 10px;
+} */
+
+.table1 {
+  width: 1000px;
+}
+.table2 {
+  width: 400px;
+}
+.table1 th td {
+  padding: 18px;
+}
+.table2 th td {
+  padding: 13px;
+}
+
+.table2 tfoot {
+  border-top: 1px dashed black;
+}
+
+p,
+li,
+.table1,
+.table2,
+ol li {
+  font-size: 20px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  display: block;
+  width: 200px;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 10px;
+  text-align: center;
+}
+
+/* Darker background on mouse-over */
+.button:hover {
+  background-color: #29a329;
+}
+.download {
+  background-color: #2eb82e;
+}
+.go-home {
+  background-color: rgb(12, 119, 207);
+}
+
+.btn-container {
+  display: none;
+}
+
+#logo {
+  color: rgb(12, 119, 207);
+  text-align: end;
+}
+.fa-plane {
+  color: rgb(12, 119, 207);
+  margin-right: 5px;
+  font-size: 30px;
+  transform: rotate(-45deg);
+}

@@ -1,0 +1,25 @@
+.container {
+  padding: 40px 100px;
+  opacity: 0.9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input {
+  margin-top: 10px;
+  padding: 5px;
+}
+.one-way > label {
+  margin-left: 5px;
+}
+
+.btn-div {
+  margin: 30px auto 0 auto;
+  width: 100%;
+}
+.btn {
+  width: 100%;
+  font-size: 20px;
+}
+.btn-div a {
+  text-decoration: none;
+}

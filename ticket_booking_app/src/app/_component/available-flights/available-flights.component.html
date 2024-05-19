@@ -1,0 +1,66 @@
+@if(isShow){
+<div class="container">
+  <h3 class="text-warning">Searched Flight Details</h3>
+
+  @if(isError){
+  <p class="bg-light text-danger w-50 mx-auto">
+    <strong>{{ error }}</strong>
+  </p>
+  <button (click)="goBack()">Search again</button>
+  } @else{
+
+  <table class="mx-auto bg-light">
+    <tbody>
+      @for(data of availableFlightsArray; track data.route){
+
+      <tr>
+        <td>
+          Airline : <span>{{ data.flightName }}-{{ token }}</span>
+        </td>
+        <td>
+          Date of Journey : <span>{{ currentDate }}</span>
+        </td>
+        <td>
+          Time : <span>{{ data.time }}</span>
+        </td>
+
+        @if(data.adultsBasePrice && data.childBasePrice){
+        <td>
+          Price per adult : <span>{{ data.adultsBasePrice }}</span>
+        </td>
+        <td>
+          Price per child : <span>{{ data.childBasePrice }}</span>
+        </td>
+        }@else{ @if(data.adultsBasePrice){
+        <td>
+          Price per adult : <span>{{ data.adultsBasePrice }}</span>
+        </td>
+        }@else{ @if(data.childBasePrice){
+        <td>
+          Price per child : <span>{{ data.childBasePrice }}</span>
+        </td>
+        } } }
+        <td>
+          <a
+            id="book-ticket"
+            [routerLink]="['/booking-flights']"
+            [queryParams]="{
+              airplane: data.flightName + token,
+              date: currentDate,
+              flightTime: data.time,
+              adultsBasePrice: data.adultsBasePrice,
+              childBasePrice: data.childBasePrice
+            }"
+          >
+            book ticket
+          </a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <button (click)="goBack()">Search again</button>
+  }
+</div>
+}

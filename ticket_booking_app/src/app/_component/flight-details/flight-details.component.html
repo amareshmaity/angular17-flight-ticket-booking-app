@@ -1,0 +1,163 @@
+<div class="container bg-light">
+  <form [formGroup]="queryFlightsForm" (ngSubmit)="submit()">
+    <div class="one-way input">
+      <input type="radio" name="Way" id="one-way" value="one way" />
+      <label for="one-way">One Way</label>
+    </div>
+
+    <div id="from-to" class="d-flex flex-row input">
+      <div class="from flex-fill">
+        <p><strong>FROM</strong></p>
+        <select
+          class="form-select form-control"
+          aria-label="Default select example"
+          formControlName="source"
+        >
+          <option value="mumbai">Mumbai</option>
+          <option selected value="kolkata">Kolkata</option>
+          <option value="chennai">Chennai</option>
+          <option value="delhi">Delhi</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="guwahati">Guwahati</option>
+        </select>
+
+        @if(f['source'].touched && f['source'].invalid){
+
+        <div class="text-danger">
+          @if(f['source'].errors && f['source'].errors['required']){
+
+          <div>From field is required</div>
+          }
+        </div>
+        }
+      </div>
+      <div class="to flex-fill">
+        <p><strong>TO</strong></p>
+        <select
+          class="form-select form-control"
+          aria-label="Default select example"
+          formControlName="destination"
+        >
+          <option selected value="mumbai">Mumbai</option>
+          <option value="kolkata">Kolkata</option>
+          <option value="chennai">Chennai</option>
+          <option value="delhi">Delhi</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="guwahati">Guwahati</option>
+        </select>
+        @if(f['destination'].touched && f['destination'].invalid){
+
+        <div class="text-danger">
+          @if(f['destination'].errors && f['destination'].errors['required']){
+
+          <div>To field is required</div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="input departing">
+      <p><strong>DEPARTING</strong></p>
+      <input
+        type="date"
+        name="date"
+        id="date"
+        class="form-control"
+        formControlName="date"
+        [min]="today"
+      />
+
+      @if(f['date'].touched && f['date'].invalid){
+
+      <div class="text-danger">
+        @if(f['date'].errors && f['date'].errors['required']){
+
+        <div>Date is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div id="adults-child" class="d-flex flex-row input">
+      <div class="adults-no flex-fill">
+        <p><strong>ADULTS (18 +)</strong></p>
+        <input
+          type="number"
+          name="Adults No"
+          id="adults-no"
+          class="form-control"
+          formControlName="adultsNo"
+          min="0"
+          oninput="validity.valid||(value='');"
+        />
+
+        @if(f['adultsNo'].touched && f['adultsNo'].invalid){
+
+        <div class="text-danger">
+          @if(f['adultsNo'].errors && f['adultsNo'].errors['required']){
+
+          <div>Adults number required</div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="child-no flex-fill">
+        <p><strong>CHILDS (0 - 17)</strong></p>
+        <input
+          type="number"
+          name="Child No"
+          id="child-no"
+          class="form-control"
+          formControlName="childNo"
+          min="0"
+          oninput="validity.valid||(value='');"
+        />
+
+        @if(f['childNo'].touched && f['childNo'].invalid){
+
+        <div class="text-danger">
+          @if(f['childNo'].errors && f['childNo'].errors['required']){
+
+          <div>Childs number required</div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="input travelClass">
+      <p><strong>TRAVEL CLASS</strong></p>
+      <select
+        class="form-select form-control"
+        aria-label="Default select example"
+        formControlName="travelClass"
+      >
+        <option selected value="firstClass">First Class</option>
+        <option value="businessClass">Business Class</option>
+        <option value="economyClass">Economy Class</option>
+      </select>
+
+      @if(f['travelClass'].touched && f['travelClass'].invalid){
+
+      <div class="text-danger">
+        @if(f['travelClass'].errors && f['travelClass'].errors['required']){
+
+        <div>Childs number required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="btn-div">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="queryFlightsForm.invalid"
+      >
+        Show Flights
+      </button>
+    </div>
+  </form>
+</div>

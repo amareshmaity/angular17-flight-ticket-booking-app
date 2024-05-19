@@ -1,0 +1,157 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
+<div [ngClass]="{ 'btn-container': isShow == true }">
+  <h4 class="text-head">Click on below button to view the ticket</h4>
+  <button class="view-tkt-btn" type="button" (click)="viewTicket()">
+    View Ticket
+  </button>
+</div>
+
+@if(isShow){
+
+<div
+  class="container"
+  id="ticket"
+  style="background-color: white; padding: 60px"
+>
+  <h3 id="logo"><i class="fa fa-plane"></i> Flight Booker</h3>
+  <h2 style="text-align: center">Plane Ticket Purchase</h2>
+  <hr />
+  <h4>PNR Number: {{ ticketDetails["pnr"] }}</h4>
+  <h3>Booking Date</h3>
+  <p>{{ ticketDetails["bookingDate"] }}</p>
+
+  <h3>Guest Name</h3>
+  <ol>
+    @for(name of passengerNames; track name){
+    <li>{{ name }}</li>
+    }
+  </ol>
+
+  <hr />
+
+  <h2>Flight Details</h2>
+  <h4>Route</h4>
+  <table [ngClass]="{ table1: isShow }">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Airline</th>
+        <th>Departure Date</th>
+        <th>Time</th>
+        <th>Travel Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ ticketDetails["from"] }}</td>
+        <td>{{ ticketDetails["to"] }}</td>
+        <td>{{ ticketDetails["airline"] }}</td>
+        <td>{{ ticketDetails["departureDate"] }}</td>
+        <td>{{ ticketDetails["departureTime"] }}</td>
+        <td>{{ ticketDetails["travelClass"] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h3>Fare Breakdown</h3>
+  <table [ngClass]="{ table2: isShow }">
+    <tbody>
+      <tr>
+        <td>Base Fare</td>
+        <td>₹ {{ ticketDetails["totalBasePrice"] }}</td>
+      </tr>
+      <tr>
+        <td>Passenger Service Charge</td>
+        <td>₹ {{ passengerServiceCharge }}</td>
+      </tr>
+      <tr>
+        <td>Surcharge</td>
+        <td>₹ {{ surcharge }}</td>
+      </tr>
+      <tr>
+        <td>Fuel/Insurance</td>
+        <td>₹ {{ fuelInsurance }}</td>
+      </tr>
+      <tr>
+        <td>Ticket Service Charge</td>
+        <td>₹ {{ ticketServiceCharge }}</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td><strong>Total Amount</strong></td>
+        <td>
+          <strong>₹ {{ totalPrice }}</strong>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div id="terms" style="margin-top: 30px">
+    <hr />
+    <h1>Important Information</h1>
+    <p>
+      Passengers are recommended to ensure that you have all necessary travel
+      documents, including your passport and visa if required. Arrive at the
+      airport at least 2 hours before your flight for domestic trips and 3 hours
+      for international flights. Carry essential medications in your hand
+      luggage. Familiarize yourself with safety procedures and listen to crew
+      instructions at all times. For your convenience, in-flight Wi-Fi and
+      entertainment options are available. Have a pleasant and safe journey!
+    </p>
+
+    <h2>Plane Ticket Purchase</h2>
+    <h3>Privacy Policy</h3>
+    <p>https://www.flight-booker.com/privacy-policy</p>
+
+    <h3>Terms and Condition</h3>
+    <p>https://www.flight-booker.com/terms-and-conditions</p>
+
+    <h3>Restricted Items or Goods</h3>
+    <p>
+      For your safety and the safety of all passengers, certain items are
+      strictly prohibited on board. Do not carry the following items in your
+      carry-on or checked luggage:
+    </p>
+
+    <ul>
+      <li>Explosives and fireworks</li>
+      <li>Flammable liquids and solids</li>
+      <li>Compressed gases (e.g., propane, butane)</li>
+      <li>Corrosive substances (e.g., acids, batteries)</li>
+      <li>Poisonous and toxic substances</li>
+      <li>Firearms and ammunition</li>
+      <li>Sharp objects (e.g., knives, scissors)</li>
+      <li>Self-defense items (e.g., pepper spray)</li>
+    </ul>
+
+    <p>Please ensure your luggage complies with these restrictions.</p>
+
+    <hr />
+    <p>
+      "Thank you for choosing us. We're delighted to have you aboard. Safe
+      travels ahead!"
+    </p>
+  </div>
+</div>
+
+<div class="button-container">
+  <button type="button" (click)="downloadPDF()" class="button download">
+    <i class="fa fa-download"></i> Download Ticket
+  </button>
+  <button type="button" (click)="goHome()" class="button go-home">
+    Go Home
+  </button>
+</div>
+
+}
